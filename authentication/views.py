@@ -1,11 +1,12 @@
 from django.shortcuts import render
-from .serializer import RegisterSerializer,LoginSerializer
+from .serializer import RegisterSerializer,LoginSerializer,RegisterSerializerBySuperUser
 from rest_framework import generics,mixins,status
 from rest_framework.response import Response
 from .models import User
 from django.contrib.auth import authenticate,login
 from rest_framework_jwt.settings import api_settings
-from utils.permissions import NonRegisteredUserOnly
+from utils.permissions import NonRegisteredUserOnly,SuperUserOnly
+from rest_framework.authentication import SessionAuthentication
 
 jwt_payload_handler             = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler              = api_settings.JWT_ENCODE_HANDLER
@@ -51,3 +52,11 @@ class RegisterAPIView(generics.CreateAPIView):
      permission_classes     =   [NonRegisteredUserOnly]
      authentication_classes =   []
      serializer_class       =   RegisterSerializer
+
+
+
+class RegisteredBySuperUserAPIView(generics.CreateAPIView):
+     queryset               =   User.objects.all()
+     permission_classes     =   [SuperUserOnly]
+     authentication_classes =   [SessionAuthentication]
+     serializer_class       =   RegisterSerializerBySuperUser

@@ -36,6 +36,7 @@ class Product(models.Model):
     shop_name       =   models.ForeignKey(ShopProfile,on_delete=models.CASCADE)
     product_name    =   models.CharField(max_length=120,blank=False,null=False)
     product_price   =   models.DecimalField(max_digits=10,decimal_places=2)
+    product_image   =   models.FileField(upload_to='product_images/', null=True, verbose_name="")
     # product_color   =   models.CharField(max_length=120)
     # product_size    =   models.CharField(max_length=120)
     brand_name      =   models.ForeignKey(Brand,on_delete=models.SET_NULL,null=True)

@@ -152,8 +152,7 @@ class CartAPIView(generics.ListAPIView):
                     total    +=  x.quantity
                 object.total_items  = total
                 object.save()
-                response        =   {"message":"cart created succesfully"}
-                return Response(response)
+                return redirect("/cart/")
 
 
         else:
