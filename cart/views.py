@@ -69,8 +69,13 @@ class RemoveItemFromCartAPIView(generics.GenericAPIView):
             try:
                 product     =         Product.objects.get(product_id=product_id)
                 item        =         OrderItem.objects.get(User=user,product=product)
-                item.delete()
-                response        =   {"message":"item removed"}
+                print(item.quantity)
+                if item.quantity==1:
+                    item.delete()
+                    response        =   {"message":"item removed"}
+                item.quantity -=1
+                item.save()
+                response        =   {"message":"item updated"}
                 return Response(response)
             except:
                 response        =   {"message":"item is not in cart"}
