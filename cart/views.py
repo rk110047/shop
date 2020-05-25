@@ -131,7 +131,7 @@ class CartAPIView(generics.ListAPIView):
                 queryset = self.get_queryset()
                 serializer = CartDetailSerializer(queryset, many=True,context={'request': request})
                 print(serializer.data)
-                response        ={"products":serializer.data,'total items':qs.total_items,'cart total':qs.total_price,}
+                response        ={"products":serializer.data,'total_items':qs.total_items,'cart_total':qs.total_price,}
                 return Response(response)
                 # response        ={'data':{"products":product,'total items':qs.total_items,'cart total':qs.total_price,}}
                 # return Response(response)
