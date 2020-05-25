@@ -13,7 +13,7 @@ class CartDetailSerializer(WritableNestedModelSerializer):
     # remove_from_cart     =    serializers.HyperlinkedIdentityField(view_name='cart:remove_from_cart',lookup_field='product_id')
     delete_item_from_cart = serializers.HyperlinkedIdentityField(view_name='cart:delete_item_from_cart',lookup_field='item_id')
     # url             =   serializers.HyperlinkedIdentityField(view_name='product:detail product',lookup_field='product_id')
-    product         =   ProductDetailForCartSerializer()
+    product         =   ProductDetailSerializer()
     # item              =   serializers.SerializerMethodField()
     class Meta:
         model      = OrderItem
