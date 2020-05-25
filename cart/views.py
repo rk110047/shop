@@ -10,7 +10,6 @@ from orders.models import  Order
 from billing.models import BillingProfile
 from addresses.models import Address
 from django.views import View
-from rest_framework_serializer_extensions.views import SerializerExtensionsAPIViewMixin
 import json
 
 
@@ -82,7 +81,7 @@ class RemoveItemFromCartAPIView(generics.GenericAPIView):
 
 
 
-class CartAPIView(SerializerExtensionsAPIViewMixin,generics.ListAPIView):
+class CartAPIView(generics.ListAPIView):
     # queryset                =       OrderItem.objects.all()
     serializer_class        =       CartDetailSerializer
     permission_classes      =       []

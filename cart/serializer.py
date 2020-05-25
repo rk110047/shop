@@ -2,11 +2,10 @@ from rest_framework import serializers
 from product.serializer import ProductDetailForCartSerializer
 from .models import Cart
 from .models import OrderItem
-from dynamic_rest.fields.fields import DynamicRelationField
-from dynamic_rest.serializers import DynamicModelSerializer
+
 from product.serializer import ProductDetailSerializer
-from rest_flex_fields import FlexFieldsModelSerializer
-from rest_framework_serializer_extensions.serializers import SerializerExtensionsMixin
+
+
 from drf_writable_nested.serializers import WritableNestedModelSerializer
 
 
