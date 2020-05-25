@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Product
 from shopkeeper.serializer import ShopDetailSerializer
-from rest_flex_fields import FlexFieldsModelSerializer
+
 
 
 
@@ -27,7 +27,7 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
 
 
-class ProductDetailForCartSerializer(FlexFieldsModelSerializer):
+class ProductDetailForCartSerializer(serializers.ModelSerializer):
     # add_to_cart     =    serializers.HyperlinkedIdentityField(view_name='cart:add_to_cart',lookup_field='product_id')
     # shop_name       =    ShopDetailSerializer(read_only=True)
     class Meta:
