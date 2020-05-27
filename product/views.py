@@ -70,7 +70,7 @@ class ProductCreateAPIView(generics.CreateAPIView):
 
 class ProductUpdateAPIView(generics.UpdateAPIView):
     queryset                =   Product.objects.all()
-    serializer_class        =   ProductSerializer
+    serializer_class        =   ProductCreateSerializer
     permission_classes      =   [IsOwnerOrReadOnly]
     authentication_classes  =   [SessionAuthentication]
     lookup_field            =   'product_id'
