@@ -34,3 +34,12 @@ class ProductDetailForCartSerializer(serializers.ModelSerializer):
         model   =   Product
         fields  =   '__all__'
         # read_only_fields    =   ['product_id','user','shop_name']
+
+
+class ProductCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   =   Product
+        fields  =   '__all__'
+        read_only_fields    =   ['product_id','user','shop_name']
+
+

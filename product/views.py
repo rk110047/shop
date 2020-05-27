@@ -3,7 +3,7 @@ from rest_framework import generics
 from rest_framework.authentication import SessionAuthentication
 from .models import Product
 from django.db.models import Q
-from .serializer import ProductSerializer,ProductDetailSerializer
+from .serializer import ProductSerializer,ProductDetailSerializer,ProductCreateSerializer
 from django.contrib.auth.decorators import login_required
 from utils.permissions import IsOwnerOrReadOnly
 
@@ -55,7 +55,7 @@ class ProductSearchAPIView(generics.ListAPIView):
 
 class ProductCreateAPIView(generics.CreateAPIView):
     queryset                =   Product.objects.all()
-    serializer_class        =   ProductSerializer
+    serializer_class        =   ProductCreateSerializer
     # permission_classes      =   []
     authentication_classes  =   [SessionAuthentication]
 
