@@ -13,7 +13,7 @@ urlpatterns = [
     path('auth/',include('authentication.urls')),
     path('product/',include('product.urls')),
     path('customer/',include('customer.urls')),
-    path('shop/',include('shopkeeper.urls')),
+    path('shops/',include('shopkeeper.urls')),
     path('auth/api/',obtain_jwt_token),
     path('cart/',include('cart.urls')),
     path('address/',include('addresses.urls'))

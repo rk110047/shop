@@ -44,10 +44,9 @@ class ProductSearchAPIView(generics.ListAPIView):
         request    =    self.request
         queryset   =    Product.objects.all()
         query      =    request.GET.get('q')
-        print(query)
         if query is not None:
-            queryset     =    queryset.filter(Q(product_name__icontains=query)|
-                                                Q(brand_name__icontains=query))
+            queryset     =    queryset.filter(Q(product_name__icontains=query))
+                                                # Q(brand_name__icontains=query))
                                                 # Q(shop__icontains=query))
 
         return queryset

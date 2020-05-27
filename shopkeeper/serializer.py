@@ -14,3 +14,8 @@ class ShopDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model       =       ShopProfile
         fields      =       ['shop_name']
+
+class ShopsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model       =       ShopProfile
+        fields      =       '__all__'
