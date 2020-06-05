@@ -82,7 +82,7 @@ class GetProductById(generics.ListAPIView):
     permission_classes      =   [IsOwnerOrReadOnly]
     authentication_classes  =   [SessionAuthentication]
     
-    get_queryset(self,request):
+    def get_queryset(self,request):
         request    =    self.request
         try:
             user       =    request.user.id
