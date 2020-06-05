@@ -83,11 +83,10 @@ class GetProductById(generics.ListAPIView):
     authentication_classes  =   []
     lookup_field            =   'user'
     
-    def get_queryset(self,user):
-        queryset    =    Product.objects.all()
-        if user:
-            queryset     =    Product.objects.filter(user=user)        
-        return queryset
+    def get(self,request,user):
+        queryset     =    self.get_object(user) 
+        serializer   =    ProductSerializer(queryset,many=True)       
+        return serializer.data
     
 
 
