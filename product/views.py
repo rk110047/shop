@@ -74,3 +74,20 @@ class ProductUpdateAPIView(generics.UpdateAPIView):
     permission_classes      =   [IsOwnerOrReadOnly]
     authentication_classes  =   [SessionAuthentication]
     lookup_field            =   'product_id'
+
+
+class GetProductById(generics.ListAPIView):
+    queryset                =   Product.objects.all()
+    serializer_class        =   ProductSerializer
+    permission_classes      =   [IsOwnerOrReadOnly]
+    authentication_classes  =   [SessionAuthentication]
+    
+    get_queryset(self,request,id=None):
+        request    =    self.request
+        try:
+            user       =    request.user.id
+            product    =    Product.objects.filter(user=user)
+            return product
+        return Product.objects.all()
+
+
