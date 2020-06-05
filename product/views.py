@@ -81,7 +81,7 @@ class GetProductById(generics.ListAPIView):
     serializer_class        =   ProductSerializer
     permission_classes      =   []
     authentication_classes  =   []
-    lookup_field            =   'User'
+    lookup_field            =   'user'
     
     
 
