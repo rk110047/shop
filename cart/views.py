@@ -43,7 +43,7 @@ class ItemCreateAPIView(generics.GenericAPIView):
                     item.save()
                     item.price           =   item.quantity*product.product_price
                     item.save()
-                    response    =   {"message":'already in cart'}
+                    response    =   {"message":'cart updated'}
                     return Response(response)
                 except:
                     product             =   Product.objects.get(product_id=product_id)
