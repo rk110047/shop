@@ -85,7 +85,7 @@ class GetProductById(generics.ListAPIView):
     
     def get(self,request,user,*args,**kwargs):
         queryset     =    Product.objects.filter(user=user) 
-        serializer   =    ProductSerializer(queryset,many=True)       
+        serializer   =    ProductSerializer(queryset,many=True,context={'request': request})       
         return serializer.data
     
 
