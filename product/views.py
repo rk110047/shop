@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.authentication import SessionAuthentication
+from rest_framework.response import Response
 from .models import Product
 from django.db.models import Q
 from .serializer import ProductSerializer,ProductDetailSerializer,ProductCreateSerializer
@@ -86,7 +87,7 @@ class GetProductById(generics.ListAPIView):
     def get(self,request,user,*args,**kwargs):
         queryset     =    Product.objects.filter(user=user) 
         serializer   =    ProductSerializer(queryset,many=True,context={'request': request})       
-        return serializer.data
+        return Response(serializer.data)
     
 
 
