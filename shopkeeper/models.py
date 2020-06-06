@@ -13,7 +13,7 @@ class ShopProfile(models.Model):
     shop_image          =   models.FileField(upload_to='shops/',null=True, verbose_name="")
     contact             =   models.IntegerField()
     email_address       =   models.EmailField(unique=True)
-    timming             =   models.IntegerField()
+    timming             =   models.CharField(max_length=120,blank=False,null=False)
     shop_details        =   models.TextField()
     active              =   models.BooleanField(default=True)
 
