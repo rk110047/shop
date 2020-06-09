@@ -9,4 +9,4 @@ class CustomerProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model       =       CustomerProfile
         fields      =       '__all__'
-        read_only_fields    =   ['User']
+        read_only_fields    =   ['User','email']
