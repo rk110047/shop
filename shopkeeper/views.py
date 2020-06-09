@@ -24,7 +24,6 @@ class ShopsAPIView(generics.ListAPIView):
 		request 	= 	self.request
 		queryset    =	ShopProfile.objects.filter(active=True)
 		query       =   request.GET.get('q')
-		print(query)
 		if query is not None:
 			queryset 		= 	queryset.filter(Q(shop_name__icontains=query))
 			# return shops
