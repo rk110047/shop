@@ -11,7 +11,7 @@ class CustomerProfile(models.Model):
     last_name           =    models.CharField(max_length=20)
     email               =    models.EmailField()
     phone_number        =    models.IntegerField()
-    address_line        =    models.CharField(max_length=120)
+    address_line_1      =    models.CharField(max_length=120)
     town_city           =    models.CharField(max_length=120)
     state               =    models.CharField(max_length=120)
     country             =    models.CharField(max_length=120)
