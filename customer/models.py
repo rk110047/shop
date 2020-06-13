@@ -20,4 +20,4 @@ class CustomerProfile(models.Model):
 
 
     def __str__(self):
-        return self.User
+        return self.Customer_id
