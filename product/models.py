@@ -32,6 +32,7 @@ class Categories(models.Model):
 
 class Product(models.Model):
     product_id      =   models.AutoField(primary_key=True)
+    product_code    =   models.CharField(max_length=120,null=True,blank=True)
     user            =   models.ForeignKey(User,on_delete=models.CASCADE)
     shop_name       =   models.ForeignKey(ShopProfile,on_delete=models.CASCADE)
     product_name    =   models.CharField(max_length=120,blank=False,null=False)
