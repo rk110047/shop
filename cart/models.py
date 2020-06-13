@@ -10,9 +10,6 @@ class OrderItem(models.Model):
     product     =       models.ForeignKey(Product,on_delete=models.CASCADE,null=True,blank=True)
     quantity    =       models.IntegerField(default=1)
     price       =       models.IntegerField(default=0)
-    active      =       models.BooleanField(default=True)
-    online      =       models.BooleanField(default=True)
-
 
 
     #
@@ -36,7 +33,6 @@ class Cart(models.Model):
     product              =       models.ManyToManyField(OrderItem)
     total_items          =       models.IntegerField(null=True,blank=True)
     total_price          =       models.IntegerField(null=True,blank=True)
-    ordered              =       models.BooleanField(default=False)
 
 # def pre_save_cart_item_total(instance,sender,*args,**kwargs):
 #     if created:
