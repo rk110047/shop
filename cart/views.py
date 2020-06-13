@@ -111,7 +111,7 @@ class CartAPIView(generics.ListAPIView):
         if user.is_authenticated:
 
             try:
-                # cart        =   user.cart
+                cart        =   user.cart
                 object = Cart.objects.get(User=user or None)
                 if OrderItem.objects.filter(User=user):
                     qs = OrderItem.objects.filter(User=user)
