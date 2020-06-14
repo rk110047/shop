@@ -175,9 +175,11 @@ class CheckOutAPIView(generics.GenericAPIView):
         user                =   self.request.user
         if user.is_authenticated:
             try:
-                cart_obj    =   Cart.objects.get(User=user)
-                order_obj   =   Order.objects.get(cart=cart_obj,order_status_choices="created")
-                response    =    {"order id":order_obj.order_id,"cart total":cart_obj.total_price,"shipping_total":order_obj.shipping_total,"order totel":order_obj.total}
+                cart_obj        =   Cart.objects.get(User=user)
+                order_obj       =   Order.objects.get(cart=cart_obj,active=True)
+                order_obj.total =   cart_obj.total_price
+                order_obj.save()
+                response        =    {"order id":order_obj.order_id,"cart total":cart_obj.total_price,"shipping_total":order_obj.shipping_total,"order totel":order_obj.total}
                 return Response(response)
             except:
                 cart_obj                 =   Cart.objects.get(User=user)
