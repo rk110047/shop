@@ -40,7 +40,7 @@ class Product(models.Model):
     product_image   =   models.FileField(upload_to='product_images/', null=True, verbose_name="")
     # product_color   =   models.CharField(max_length=120)
     # product_size    =   models.CharField(max_length=120)
-    brand_name      =   models.ForeignKey(Brand,on_delete=models.SET_NULL,null=True)
+    # brand_name      =   models.ForeignKey(Brand,on_delete=models.SET_NULL,null=True)
     quantity        =   models.IntegerField()
     # slug            =   models.SlugField()
     Category        =   models.ForeignKey(Categories,on_delete=models.SET_NULL,null=True)
