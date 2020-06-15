@@ -14,8 +14,11 @@ class ShippingAddressCreateAPIView(generics.CreateAPIView):
 
 
     def post(self,request,*args,**kwargs):
-        self.create(request,*args,**kwargs)
-        return Response({"message":"posted"}) 
+        try:
+            self.create(request,*args,**kwargs)
+            return Response({"message":"posted"}) 
+        except:
+            return Response({"message":"not posted"})
 
     def perform_create(self,serializer):
         billingprofile       =   self.request.user.billingprofile
