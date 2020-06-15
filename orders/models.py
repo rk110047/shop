@@ -3,6 +3,7 @@ from cart.models import Cart
 from billing.models import BillingProfile
 from addresses.models import Address
 from .utils import unique_id_generator
+from authentication.models import User
 from django.db.models.signals import pre_save,post_save
 
 class Order(models.Model):
@@ -17,6 +18,8 @@ class Order(models.Model):
     total           =   models.DecimalField(default=0.00,decimal_places=2,max_digits=100)
     order_status    =   models.CharField(max_length=120,choices=order_status_choices,default='created')
     active          =   models.BooleanField(default=True)
+    ordered         =   models.BooleanField(default=False)
+    User            =   models.ManyToManyField(User)
 
     def __str__(self):
         return self.order_id

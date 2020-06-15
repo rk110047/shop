@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics
+from rest_framework.response import Response
 from .models import Address
 from .serializer import AddressSerializer
 from django.shortcuts import redirect
@@ -14,7 +15,7 @@ class ShippingAddressCreateAPIView(generics.CreateAPIView):
 
     def post(self,request,*args,**kwargs):
         self.create(request,*args,**kwargs)
-        return redirect("/address/billing/")
+        return Response({"message":"posted"}) 
 
     def perform_create(self,serializer):
         billingprofile       =   self.request.user.billingprofile
@@ -29,7 +30,7 @@ class BillingAddressCreateAPIView(generics.CreateAPIView):
 
     def post(self,request,*args,**kwargs):
         self.create(request,*args,**kwargs)
-        return redirect("/cart/checkout/")
+        return Response({"message":"posted"})
 
     def perform_create(self,serializer):
         billingprofile       =   self.request.user.billingprofile

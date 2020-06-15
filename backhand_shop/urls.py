@@ -16,5 +16,6 @@ urlpatterns = [
     path('shops/',include('shopkeeper.urls')),
     path('auth/api/',obtain_jwt_token),
     path('cart/',include('cart.urls')),
-    path('address/',include('addresses.urls'))
+    path('address/',include('addresses.urls')),
+    path('orders/',include('orders.urls'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

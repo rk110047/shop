@@ -26,6 +26,13 @@ class CartDetailSerializer(WritableNestedModelSerializer):
 
 
 class OrderItemDetailSerializer(serializers.ModelSerializer):
+    product         =   ProductDetailSerializer()
     class Meta:
         model      = OrderItem
+        fields     = ["product"]
+
+class CartDetailforOrderSerializer(WritableNestedModelSerializer):
+    # product         =   OrderItemDetailSerializer()
+    class Meta:
+        model      = Cart
         fields     = "__all__"

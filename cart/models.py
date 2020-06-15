@@ -30,10 +30,11 @@ class OrderItem(models.Model):
 
 
 class Cart(models.Model):
-    User                 =       models.OneToOneField(User,on_delete=models.CASCADE)
+    User                 =       models.ManyToManyField(User)
     product              =       models.ManyToManyField(OrderItem)
     total_items          =       models.IntegerField(null=True,blank=True)
     total_price          =       models.IntegerField(null=True,blank=True)
+    active               =       models.BooleanField(default=True)
 
 # def pre_save_cart_item_total(instance,sender,*args,**kwargs):
 #     if created:
