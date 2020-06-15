@@ -12,7 +12,7 @@ class Address(models.Model):
     city                 =      models.CharField(max_length=120)
     state                =      models.CharField(max_length=120)
     country              =      models.CharField(max_length=120,default='INDIA')
-    zip_code             =      models.IntegerField()
+    zip_code             =      models.CharField(max_length=120,null=True,blank=True)
 
 
     def __str__(self):
