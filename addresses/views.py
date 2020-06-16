@@ -18,7 +18,7 @@ class ShippingAddressCreateAPIView(generics.CreateAPIView):
     def post(self,request,*args,**kwargs):
        return self.create(request,*args,**kwargs)
 
-    def perform_create(self,request,serializer):
+    def perform_create(self,serializer):
         print(self.request.user)
         billingprofile       =   self.request.user.billingprofile
         serializer.save(billingprofile=billingprofile)
