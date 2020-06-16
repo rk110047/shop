@@ -5,4 +5,4 @@ class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model  =    Address
         fields =    '__all__'
-        read_only_fields='billingprofile','address_type'
+        read_only_fields=['billingprofile','address_type']
