@@ -191,13 +191,15 @@ class CheckOutAPIView(generics.GenericAPIView):
                 response        =    {"order id":order_obj.order_id,"cart total":cart_obj.total_price,"shipping_total":order_obj.shipping_total,"order totel":order_obj.total}
                 return Response(response)
             except:
-                cart_obj        =   Cart.objects.filter(User=user,active=True)
-                cart_obj        =   cart_obj.first()
+                cart_obj                 =   Cart.objects.filter(User=user,active=True)
+                cart_obj                 =   cart_obj.first()
                 billing_profile,created  =   BillingProfile.objects.get_or_create(User=user,email=user.email)
                 shipping_address         =   Address.objects.get(billingprofile=billing_profile,address_type="SHIPPING")
+                shipping_address         =   shipping_address.last()
                 billing_address          =   Address.objects.get(billingprofile=billing_profile,address_type="BIILING")
-                order_obj       =   Order.objects.create(cart=cart_obj,billing_profile=billing_profile,billing_address=billing_address,shipping_address=shipping_address)
-                response        =    {"order id":order_obj.order_id,"cart total":cart_obj.total_price,"shipping_total":order_obj.shipping_total,"order total":order_obj.total}
+                billing_address          =   billing_address.last()
+                order_obj                =   Order.objects.create(cart=cart_obj,billing_profile=billing_profile,billing_address=billing_address,shipping_address=shipping_address)
+                response                 =    {"order id":order_obj.order_id,"cart total":cart_obj.total_price,"shipping_total":order_obj.shipping_total,"order total":order_obj.total}
                 return Response(response)
 
 

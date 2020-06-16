@@ -12,7 +12,7 @@ class ShippingAddressCreateAPIView(generics.CreateAPIView):
     queryset                        =   Address.objects.all()
     serializer_class                =   AddressSerializer
     permission_classes              =   []
-    authentication_classes          =   [JSONWebTokenAuthentication]
+    authentication_classes          =   [JSONWebTokenAuthentication,SessionAuthentication]
 
 
     def post(self,request,*args,**kwargs):
@@ -27,7 +27,7 @@ class BillingAddressCreateAPIView(generics.CreateAPIView):
     queryset                        =   Address.objects.all()
     serializer_class                =   AddressSerializer
     permission_classes              =   []
-    authentication_classes          =   [JSONWebTokenAuthentication]
+    authentication_classes          =   [JSONWebTokenAuthentication,SessionAuthentication]
 
 
     def post(self,request,*args,**kwargs):
