@@ -6,13 +6,13 @@ from .serializer import AddressSerializer
 from django.shortcuts import redirect
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from rest_framework.authentication import TokenAuthentication
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 class ShippingAddressCreateAPIView(generics.CreateAPIView):
     queryset                        =   Address.objects.all()
     serializer_class                =   AddressSerializer
     permission_classes              =   []
-    authentication_classes          =   [SessionAuthentication]
+    authentication_classes          =   [JSONWebTokenAuthentication]
 
 
     def post(self,request,*args,**kwargs):
@@ -27,7 +27,7 @@ class BillingAddressCreateAPIView(generics.CreateAPIView):
     queryset                        =   Address.objects.all()
     serializer_class                =   AddressSerializer
     permission_classes              =   []
-    authentication_classes          =   [SessionAuthentication]
+    authentication_classes          =   [JSONWebTokenAuthentication]
 
 
     def post(self,request,*args,**kwargs):
