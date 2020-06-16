@@ -22,8 +22,8 @@ class EditProfileAPIView(generics.UpdateAPIView):
     queryset                =       CustomerProfile.objects.all()
     serializer_class        =       CustomerProfileSerializer
     permission_classes      =       []
-    authentication_classes  =       []
-    lookup_field            =       'username'
+    authentication_classes  =       [JSONWebTokenAuthentication]
+    lookup_field            =       'User'
 
 
 class CustomerListAPIView(generics.ListAPIView):
