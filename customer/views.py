@@ -3,14 +3,14 @@ from .models import CustomerProfile
 from rest_framework.authentication import SessionAuthentication
 from .serializer import CustomerProfileSerializer
 from rest_framework import  generics
-
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
 
 class CreateProfileAPIView(generics.CreateAPIView):
     queryset                =       CustomerProfile.objects.all()
     serializer_class        =       CustomerProfileSerializer
     permission_classes      =       []
-    authentication_classes  =       [SessionAuthentication]
+    authentication_classes  =       [JSONWebTokenAuthentication]
 
     def perform_create(self,serializer):
         serializer.save(User=self.request.user,email=self.request.user.email)
