@@ -15,6 +15,13 @@ class ProductDetailAPIView(generics.RetrieveAPIView):
     authentication_classes  =   []
     lookup_field            =   'product_id'
 
+class ProductDetailForScannerAPIView(generics.RetrieveAPIView):
+    queryset                =   Product.objects.all()
+    serializer_class        =   ProductDetailSerializer
+    permission_classes      =   []
+    authentication_classes  =   []
+    lookup_field            =   'product_code'
+
 
 
 class ProductListAPIView(generics.ListAPIView):
