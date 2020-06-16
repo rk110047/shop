@@ -11,7 +11,7 @@ from rest_framework.authentication import TokenAuthentication
 class ShippingAddressCreateAPIView(generics.CreateAPIView):
     queryset                        =   Address.objects.all()
     serializer_class                =   AddressSerializer
-    permission_classes              =   [IsAuthenticatedOrReadOnly]
+    permission_classes              =   []
     authentication_classes          =   [SessionAuthentication]
 
 
