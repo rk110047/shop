@@ -16,10 +16,7 @@ class ShippingAddressCreateAPIView(generics.CreateAPIView):
 
 
     def post(self,request,*args,**kwargs):
-        try:
-                self.create(request,*args,**kwargs)
-        except:
-            return Response(self.request.user)
+       return self.create(request,*args,**kwargs)
 
     def perform_create(self,serializer):
         print(self.request.user)
@@ -34,8 +31,8 @@ class BillingAddressCreateAPIView(generics.CreateAPIView):
 
 
     def post(self,request,*args,**kwargs):
-        self.create(request,*args,**kwargs)
-        return redirect("/cart/checkout/")
+        return self.create(request,*args,**kwargs)
+        
 
     def perform_create(self,serializer):
         billingprofile       =   self.request.user.billingprofile
