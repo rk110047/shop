@@ -11,7 +11,10 @@ class CreateProfileAPIView(generics.CreateAPIView):
     queryset                =       CustomerProfile.objects.all()
     serializer_class        =       CustomerProfileSerializer
     permission_classes      =       []
-    authentication_classes  =       [JSONWebTokenAuthentication]
+    authentication_classes  =       [JSONWebTokenAuthentication,SessionAuthentication]
+
+    def post(self,request,*args,**kwargs):
+       return self.create(request,*args,**kwargs)
 
     def perform_create(self,serializer):
         serializer.save(User=self.request.user,email=self.request.user.email)
