@@ -5,8 +5,8 @@ from authentication.models import User
 class CustomerProfile(models.Model):
     Customer_id         =    models.AutoField(primary_key=True)
     User                =    models.OneToOneField(User,on_delete=models.CASCADE)
-    profile_image       =    models.FileField(upload_to='profile_pic/',null=True)
-    first_name          =    models.CharField(max_length=20)
+    # profile_image       =    models.FileField(upload_to='profile_pic/',null=True)
+    name          =    models.CharField(max_length=20)
     # middle_name         =    models.CharField(max_length=20,null=True,blank=True)
     # last_name           =    models.CharField(max_length=20,null=True,blank=True)
     email               =    models.EmailField()
