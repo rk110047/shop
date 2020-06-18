@@ -16,7 +16,7 @@ class CreateProfileAPIView(generics.CreateAPIView):
     def post(self,request,*args,**kwargs):
         try:
             self.create(request,*args,**kwargs)
-            response  =   {"message":"created"}
+            response  =   {"message":"created","status":201}
             return Response(response,status=201)
         except:
             return Response({"message":"your form is invalid"})
