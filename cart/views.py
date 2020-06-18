@@ -75,6 +75,8 @@ class RemoveItemFromCartAPIView(generics.GenericAPIView):
                     response        =   {"message":"item removed"}
                 item.quantity -=1
                 item.save()
+                item.price           =   item.quantity*product.product_price
+                item.save()
                 response        =   {"message":"item updated"}
                 return Response(response)
             except:
