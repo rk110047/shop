@@ -14,7 +14,11 @@ class CreateProfileAPIView(generics.CreateAPIView):
     authentication_classes  =       [JSONWebTokenAuthentication,SessionAuthentication]
 
     def post(self,request,*args,**kwargs):
-       return self.create(request,*args,**kwargs)
+        try:
+            self.create(request,*args,**kwargs)
+            return Response("status"=200)
+        except:
+            return Response("message":"your form is invalid")
 
     def perform_create(self,serializer):
         serializer.save(User=self.request.user,email=self.request.user.email)
