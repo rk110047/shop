@@ -59,7 +59,7 @@ class RegisterAPIView(generics.CreateAPIView):
             response  =   {"message":"created","status":201}
             return Response(response,status=201)
         except:
-            return Response({"message":"provided details is wrong"})
+            return Response({"message":"provided details is invalid"})
 
 
 
