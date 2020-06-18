@@ -18,7 +18,7 @@ class CreateProfileAPIView(generics.CreateAPIView):
             self.create(request,*args,**kwargs)
             return Response("status"=200)
         except:
-            return Response("message":"your form is invalid")
+            return Response({"message":"your form is invalid"})
 
     def perform_create(self,serializer):
         serializer.save(User=self.request.user,email=self.request.user.email)
