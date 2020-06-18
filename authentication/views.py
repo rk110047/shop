@@ -53,6 +53,14 @@ class RegisterAPIView(generics.CreateAPIView):
      authentication_classes =   []
      serializer_class       =   RegisterSerializer
 
+     def post(self,request,*args,**kwargs):
+        try:
+            self.create(request,*args,**kwargs)
+            response  =   {"message":"created","status":201}
+            return Response(response,status=201)
+        except:
+            return Response({"message":"provided details is wrong"})
+
 
 
 class RegisteredBySuperUserAPIView(generics.CreateAPIView):
