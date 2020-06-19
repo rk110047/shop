@@ -16,7 +16,11 @@ class ShippingAddressCreateAPIView(generics.CreateAPIView):
 
 
     def post(self,request,*args,**kwargs):
-       return self.create(request,*args,**kwargs)
+        try:
+            self.create(request,*args,**kwargs)
+            return Response({"status":201})
+        except:
+            return Response({"message":"Invalid Address"})
 
     def perform_create(self,serializer):
         print(self.request.user)
@@ -31,7 +35,11 @@ class BillingAddressCreateAPIView(generics.CreateAPIView):
 
 
     def post(self,request,*args,**kwargs):
-        return self.create(request,*args,**kwargs)
+        try:
+            self.create(request,*args,**kwargs)
+            return Response({"status":201})
+        except:
+            return Response({"message":"Invalid Address"})
         
 
     def perform_create(self,serializer):
