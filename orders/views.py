@@ -7,7 +7,7 @@ from .models import Order
 from cart.models import Cart,OrderItem
 from .models import Order
 
-SessionAuthentication
+
 
 class OrdersAPIView(generics.ListAPIView):
 	# queryset		    		= 		Order.objects.all()
@@ -20,7 +20,7 @@ class OrdersAPIView(generics.ListAPIView):
 	def get_queryset(self):
 		request 	        =	self.request
 		billing_profile		=	request.user.billingprofile
-		queryset			=	Order.objects.filter(billing_profile=billing_profile)
+		queryset			=	Order.objects.filter(billing_profile=billing_profile,ordered=True)
 		return queryset
 
 
