@@ -6,7 +6,7 @@ class Address(models.Model):
 
 
     billingprofile       =      models.ForeignKey(BillingProfile,on_delete=models.CASCADE)
-    address_type         =      models.CharField(max_length=120,choices=ADDRESS_TYPE_CHOICES,default="SHIPPING")
+    address_type         =      models.CharField(max_length=120,choices=ADDRESS_TYPE_CHOICES)
     address_line_1       =      models.CharField(max_length=120)
     address_line_2       =      models.CharField(max_length=120,null=True,blank=True)
     city                 =      models.CharField(max_length=120)

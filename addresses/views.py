@@ -25,7 +25,7 @@ class ShippingAddressCreateAPIView(generics.CreateAPIView):
     def perform_create(self,serializer):
         print(self.request.user)
         billingprofile       =   self.request.user.billingprofile
-        serializer.save(billingprofile=billingprofile)
+        serializer.save(billingprofile=billingprofile,address_type="SHIPPING")
 
 class BillingAddressCreateAPIView(generics.CreateAPIView):
     queryset                        =   Address.objects.all()
