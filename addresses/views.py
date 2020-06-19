@@ -44,4 +44,4 @@ class BillingAddressCreateAPIView(generics.CreateAPIView):
 
     def perform_create(self,serializer):
         billingprofile       =   self.request.user.billingprofile
-        serializer.save(billingprofile=billingprofile,address_type="BILLING")
+        serializer.save(billingprofile=billingprofile,address_type="BIILING")
