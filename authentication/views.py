@@ -55,9 +55,7 @@ class RegisterAPIView(generics.CreateAPIView):
 
      def post(self,request,*args,**kwargs):
         try:
-            self.create(request,*args,**kwargs)
-            response  =   {"message":"created","status":201}
-            return Response(response,status=201)
+            return self.create(request,*args,**kwargs)
         except:
             return Response({"message":"provided details is invalid"})
 
