@@ -4,9 +4,12 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.response import Response
 from .models import Product
 from django.db.models import Q
-from .serializer import ProductSerializer,ProductDetailSerializer,ProductCreateSerializer
+from .serializer import ProductSerializer,ProductDetailSerializer,ProductCreateSerializer,ProductListOfUserSerializer,ProductDetailForListSerializer,ProductUpdateSerializer
 from django.contrib.auth.decorators import login_required
 from utils.permissions import IsOwnerOrReadOnly
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+
+
 
 class ProductDetailAPIView(generics.RetrieveAPIView):
     queryset                =   Product.objects.all()
@@ -97,4 +100,48 @@ class GetProductById(generics.ListAPIView):
         return Response(serializer.data)
     
 
+class ProductListOfUserAPIView(generics.ListAPIView):
+    # queryset                =   Product.objects.all()
+    serializer_class        =   ProductListOfUserSerializer
+    permission_classes      =   []
+    authentication_classes  =   [JSONWebTokenAuthentication,SessionAuthentication]
 
+
+
+    def get_queryset(self):
+        request    =    self.request
+        user       =    request.user
+        queryset   =    Product.objects.filter(user=user)
+        query      =    request.GET.get('q')
+        if query is not None:
+            queryset     =    queryset.filter(Q(product_name__icontains=query))
+                                                # Q(brand_name__icontains=query))
+                                                # Q(shop__icontains=query))
+
+        return queryset
+
+
+
+class ProductDetailOfListAPIView(generics.RetrieveAPIView):
+    queryset                =   Product.objects.all()
+    serializer_class        =   ProductDetailForListSerializer
+    permission_classes      =   []
+    authentication_classes  =   []
+    lookup_field            =   'product_id'
+
+
+class ProductEditAPIView(generics.UpdateAPIView):
+    queryset                =   Product.objects.all()
+    serializer_class        =   ProductUpdateSerializer
+    permission_classes      =   []
+    authentication_classes  =   []
+    lookup_field            =   'product_id'
+
+
+class ProductDeleteAPIView(generics.DestroyAPIView):
+    queryset                =   Product.objects.all()
+    serializer_class        =   ProductUpdateSerializer
+    permission_classes      =   []
+    authentication_classes  =   []
+    lookup_field            =   'product_id'
+    

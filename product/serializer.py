@@ -43,3 +43,31 @@ class ProductCreateSerializer(serializers.ModelSerializer):
         read_only_fields    =   ['product_id','user','shop_name']
 
 
+
+class ProductListOfUserSerializer(serializers.ModelSerializer):
+    url             =   serializers.HyperlinkedIdentityField(view_name='product:detail of product',lookup_field='product_id')
+    shop_name       =    ShopDetailSerializer(read_only=True)
+    class Meta:
+        model   =   Product
+        fields  =   ['user','product_image','product_name','product_price','description','shop_name','url']
+        read_only_fields    =   ['shop_name']
+
+class ProductDetailForListSerializer(serializers.ModelSerializer):
+    edit                 =      serializers.HyperlinkedIdentityField(view_name="product:edit product",lookup_field="product_id")
+    shop_name            =    ShopDetailSerializer(read_only=True)
+    delete               =      serializers.HyperlinkedIdentityField(view_name="product:delete product",lookup_field="product_id")
+
+    class Meta:
+        model   =   Product
+        fields  =  ['user','product_code','quantity','product_image','product_name','product_price','description','shop_name','active','edit','delete']
+        # read_only_fields    =   ['product_id','user','shop_name']
+
+
+class ProductUpdateSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model   =   Product
+        fields  =   '__all__'
+        read_only_fields    =   ['product_id','user','shop_name']
+
+
