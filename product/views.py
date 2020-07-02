@@ -72,7 +72,10 @@ class ProductCreateAPIView(generics.CreateAPIView):
 
     # @login_required
     def post(self,request,*args,**kwargs):
-        return self.create(request,*args,**kwargs)
+        try:
+            self.create(request,*args,**kwargs)
+        except:
+            return Response({user:self.request.user})
 
     def perform_create(self,serializer):
         shop_name       =   self.request.user.shopprofile
