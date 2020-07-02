@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product
+from .models import Product,Categories
 from shopkeeper.serializer import ShopDetailSerializer
 
 
@@ -69,5 +69,10 @@ class ProductUpdateSerializer(serializers.ModelSerializer):
         model   =   Product
         fields  =   '__all__'
         read_only_fields    =   ['product_id','user','shop_name']
+
+class CreateCatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model    =   Categories
+        fields   =   "__all__"
 
 

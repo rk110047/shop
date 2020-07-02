@@ -2,9 +2,9 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.response import Response
-from .models import Product
+from .models import Product,Categories
 from django.db.models import Q
-from .serializer import ProductSerializer,ProductDetailSerializer,ProductCreateSerializer,ProductListOfUserSerializer,ProductDetailForListSerializer,ProductUpdateSerializer
+from .serializer import ProductSerializer,ProductDetailSerializer,ProductCreateSerializer,ProductListOfUserSerializer,ProductDetailForListSerializer,ProductUpdateSerializer,CreateCatSerializer
 from django.contrib.auth.decorators import login_required
 from utils.permissions import IsOwnerOrReadOnly
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
@@ -144,4 +144,12 @@ class ProductDeleteAPIView(generics.DestroyAPIView):
     permission_classes      =   []
     authentication_classes  =   []
     lookup_field            =   'product_id'
+
+
+class CategoriesAPIView(generics.CreateAPIView):
+    queryset                =   Categories.objects.all()
+    serializer_class        =   CreateCatSerializer
+    permission_classes      =   []
+    authentication_classes  =   []
+
     
