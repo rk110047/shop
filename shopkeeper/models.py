@@ -1,5 +1,6 @@
 from django.db import models
 from authentication.models import User
+from django.db.models.signals import post_save
 
 
 class ShopProfile(models.Model):
@@ -29,4 +30,10 @@ class ShopImage(models.Model):
 
     def __str__(self):
         return F"{self.shop}"
+
+def shop_image_created_receiver(instance,sender,created,*args,**kwargs):
+    if created:
+        ShopImage.objects.get_or_create(shop=instance)
+
+post_save.connect(shop_image_created_receiver,sender=ShopProfile)
 
