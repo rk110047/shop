@@ -45,7 +45,7 @@ class Product(models.Model):
     # slug            =   models.SlugField()
     Category        =   models.ForeignKey(Categories,on_delete=models.SET_NULL,null=True)
     description     =   models.TextField()
-    active          =   models.BooleanField()
+    active          =   models.BooleanField(default=True)
 
 
     def __str__(self):

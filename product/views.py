@@ -68,7 +68,7 @@ class ProductCreateAPIView(generics.CreateAPIView):
     queryset                =   Product.objects.all()
     serializer_class        =   ProductCreateSerializer
     # permission_classes      =   []
-    authentication_classes  =   [SessionAuthentication]
+    authentication_classes  =   [JSONWebTokenAuthentication,SessionAuthentication]
 
     # @login_required
     def post(self,request,*args,**kwargs):
