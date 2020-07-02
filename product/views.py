@@ -67,7 +67,7 @@ class ProductSearchAPIView(generics.ListAPIView):
 class ProductCreateAPIView(generics.CreateAPIView):
     queryset                =   Product.objects.all()
     serializer_class        =   ProductCreateSerializer
-    # permission_classes      =   []
+    permission_classes      =   []
     authentication_classes  =   [JSONWebTokenAuthentication,SessionAuthentication]
 
     # @login_required
