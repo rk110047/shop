@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ShopProfile
+from .models import ShopProfile,ShopImage
 from authentication.user.serializer import UserDetailSerializer
 
 class ShopProfileCreateSerializer(serializers.ModelSerializer):
@@ -23,6 +23,7 @@ class ShopsSerializer(serializers.ModelSerializer):
 
 class ShopProfileDetailSerializer(serializers.ModelSerializer):
     edit            =       serializers.HyperlinkedIdentityField(view_name='shop:shop edit',lookup_field='id')
+    
     class Meta:
         model       =       ShopProfile
         fields      =       [ 'user','shop_name','address_line_1','address_line_2','town_city',
@@ -34,3 +35,10 @@ class ShopProfileDetailSerializer(serializers.ModelSerializer):
     'shop_details',
     'active',
     'edit']
+
+
+class ShopImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model               =   ShopImage
+        fields              =   "__all__"
+        read_only_fields    =   ["shop"]

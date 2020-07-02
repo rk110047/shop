@@ -22,3 +22,11 @@ class ShopProfile(models.Model):
 
     def __str__(self):
         return self.shop_name
+
+class ShopImage(models.Model):
+    shop                =   models.OneToOneField(ShopProfile,on_delete=models.CASCADE)
+    shopimage          =   models.FileField(upload_to='shopimage/',null=True, verbose_name="")
+
+    def __str__(self):
+        return F"{self.shop}"
+
