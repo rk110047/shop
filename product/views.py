@@ -76,7 +76,7 @@ class ProductCreateAPIView(generics.CreateAPIView):
             self.create(request,*args,**kwargs)
             return Response({status:201})
         except:
-            return response({message:"form invaild and price,quantity are integer field"})
+            return Response({message:"form invaild and price,quantity are integer field"})
 
     def perform_create(self,serializer):
         shop_name       =   self.request.user.shopprofile
