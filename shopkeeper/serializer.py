@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ShopProfile,ShopImage
+from .models import ShopProfile
 from authentication.user.serializer import UserDetailSerializer
 
 class ShopProfileCreateSerializer(serializers.ModelSerializer):
@@ -37,8 +37,8 @@ class ShopProfileDetailSerializer(serializers.ModelSerializer):
     'edit']
 
 
-class ShopImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model               =   ShopImage
-        fields              =   "__all__"
-        read_only_fields    =   ["shop"]
+# class ShopImageSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model               =   ShopImage
+#         fields              =   "__all__"
+#         read_only_fields    =   ["shop"]
