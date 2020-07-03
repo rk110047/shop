@@ -138,7 +138,7 @@ class ProductEditAPIView(generics.UpdateAPIView):
     queryset                =   Product.objects.all()
     serializer_class        =   ProductUpdateSerializer
     permission_classes      =   []
-    authentication_classes  =   []
+    authentication_classes  =   [JSONWebTokenAuthentication,SessionAuthentication]
     lookup_field            =   'product_id'
 
 
@@ -146,7 +146,7 @@ class ProductDeleteAPIView(generics.DestroyAPIView):
     queryset                =   Product.objects.all()
     serializer_class        =   ProductUpdateSerializer
     permission_classes      =   []
-    authentication_classes  =   []
+    authentication_classes  =   [JSONWebTokenAuthentication,SessionAuthentication]
     lookup_field            =   'product_id'
 
 
