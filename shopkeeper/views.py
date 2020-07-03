@@ -42,10 +42,10 @@ class ShopProfileDetailAPIView(generics.GenericAPIView):
         shopProfile     =		ShopProfile.objects.get(user=user)
         shopImage       =		ShopImage.objects.get(shop=user.shopprofile)
         serialize  		=		ShopProfileDetailSerializer(shopProfile,context={'request': request})
-        serialize1 		=		ShopImageSerializer(shopImage,context={'request': request})
-        serialize       =       serialize.data
-        serialize.update(serialize1.data)
-        return Response(serialize)
+        # serialize1 		=		ShopImageSerializer(shopImage,context={'request': request})
+        # serialize       =       serialize.data
+        # serialize.update(serialize1.data)
+        return Response(serialize.data)
 
 class ShopProfileEditAPIView(generics.UpdateAPIView):
 	queryset                =   ShopProfile
