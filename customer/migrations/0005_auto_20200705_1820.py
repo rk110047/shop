@@ -10,26 +10,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='customerprofile',
-            name='address_line_1',
-        ),
-        migrations.RemoveField(
-            model_name='customerprofile',
-            name='country',
-        ),
-        migrations.RemoveField(
-            model_name='customerprofile',
-            name='middle_name',
-        ),
-        migrations.RemoveField(
-            model_name='customerprofile',
-            name='profile_image',
-        ),
-        migrations.RemoveField(
-            model_name='customerprofile',
-            name='state',
-        ),
         migrations.AlterField(
             model_name='customerprofile',
             name='town_city',
